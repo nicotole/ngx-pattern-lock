@@ -1,49 +1,67 @@
 <div class="pattern-wrapper">
   
-  <span *ngIf="label" class="pattern-label">
+  @if (label) {
+  <span class="pattern-label">
     {{ label }}
   </span>
+  }
 
   <div class="pattern-container">
     <svg #svgElement viewBox="0 0 100 100" class="pattern-svg">
       
-      <line *ngFor="let line of connectedLines"
-        [attr.x1]="line.x1" [attr.y1]="line.y1"
-        [attr.x2]="line.x2" [attr.y2]="line.y2"
-        class="connection-line" 
-      />
+      @for (line of connectedLines; track $index) {
+        <line 
+          [attr.x1]="line.x1" [attr.y1]="line.y1"
+          [attr.x2]="line.x2" [attr.y2]="line.y2"
+          class="connection-line" 
+        />
+      }
 
-      <line *ngIf="currentLine"
-        [attr.x1]="currentLine.x1" [attr.y1]="currentLine.y1"
-        [attr.x2]="currentLine.x2" [attr.y2]="currentLine.y2"
-        class="connection-line" opacity="0.5" 
-      />
+      @if(currentLine) {
+        <line
+          [attr.x1]="currentLine.x1" [attr.y1]="currentLine.y1"
+          [attr.x2]="currentLine.x2" [attr.y2]="currentLine.y2"
+          class="connection-line" opacity="0.5" 
+        />
+      }
 
-      <g *ngFor="let p of points">
-        <circle [attr.cx]="p.x" [attr.cy]="p.y" 
-          [attr.r]="initRadio"  
-          fill="transparent">
-        </circle>
-        
-        <circle [attr.cx]="p.x" [attr.cy]="p.y" r="4" 
-          [class.dot-active]="selectedPoints.includes(p.id)"
-          [class.dot-inactive]="!selectedPoints.includes(p.id)">
-        </circle>
-        
-        <circle *ngIf="selectedPoints.includes(p.id)"
-          [attr.cx]="p.x" [attr.cy]="p.y" r="8" 
-          class="dot-halo">
-        </circle>
-      </g>
+      @for (p of points; track p.id) {
+        <g>
+          <circle 
+            [attr.cx]="p.x" 
+            [attr.cy]="p.y" 
+            [attr.r]="initRadio"  
+            fill="transparent">
+          </circle>
+          
+          <circle 
+            [attr.cx]="p.x" 
+            [attr.cy]="p.y" 
+            r="4" 
+            [class.dot-active]="selectedPoints.includes(p.id)"
+            [class.dot-inactive]="!selectedPoints.includes(p.id)">
+          </circle>
+          
+          @if (selectedPoints.includes(p.id)) {
+            <circle
+              [attr.cx]="p.x" 
+              [attr.cy]="p.y" 
+              r="8" 
+              class="dot-halo">
+            </circle>
+          }
+        </g>
+      }
     </svg>
   </div>
   
-  <button *ngIf="refreshButtonLabel" (click)="clear()" type="button" class="refresh-btn">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512" class="btn-icon">
-      <path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
-      <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 58l80 80-80 80"/>
-    </svg>
-    <span>{{ refreshButtonLabel }}</span>
-  </button>
-
+  @if(refreshButtonLabel){
+    <button (click)="clear()" type="button" class="refresh-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 512 512" class="btn-icon">
+        <path d="M320 146s24.36-12-64-12a160 160 0 10160 160" fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32"/>
+        <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" d="M256 58l80 80-80 80"/>
+      </svg>
+      <span>{{ refreshButtonLabel }}</span>
+    </button>
+  }
 </div>

@@ -1,5 +1,4 @@
 import { Component, Input, Output, ViewChild, EventEmitter, ElementRef, AfterViewInit, OnDestroy } from '@angular/core';
-import { CommonModule, NgIf } from '@angular/common';
 import { NgZone } from '@angular/core';
 
 @Component({
@@ -7,7 +6,7 @@ import { NgZone } from '@angular/core';
   templateUrl: './NgxPatternLockComponent.html',
   styleUrls: ['./NgxPatternLockComponent.scss'],
   standalone: true,
-  imports: [CommonModule, NgIf]
+  imports: []
 })
 export class NgxPatternLockComponent implements AfterViewInit, OnDestroy {
   @Input() label?: string = '';
