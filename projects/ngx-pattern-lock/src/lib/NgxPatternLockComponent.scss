@@ -1,0 +1,116 @@
+:host {
+  display: block;
+  width: 100%;
+}
+
+.pattern-container {
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  touch-action: none;
+  user-select: none;
+}
+
+.pattern-svg {
+  width: 100%;
+  height: 100%;
+  -webkit-tap-highlight-color: transparent; 
+  outline: none;
+}
+
+.pattern-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  user-select: none;
+}
+
+.pattern-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+}
+
+.pattern-container {
+  width: 100%;
+  max-width: var(--pattern-size, 300px);
+  aspect-ratio: 1/1;
+  display: block;
+  position: relative;
+  touch-action: none; 
+  
+  background: var(--pattern-bg, #ffffff); 
+  border: var(--pattern-border, 1px solid #e2e8f0);
+  border-radius: var(--pattern-radius, 1rem);
+}
+
+.pattern-svg {
+  width: 100%;
+  height: 100%;
+  touch-action: none;
+}
+
+.connection-line {
+  stroke: var(--pattern-color, #3b82f6);
+  stroke-width: 3;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.dot-inactive {
+  fill: #cbd5e1;
+  transition: fill 0.2s;
+}
+
+.dot-active {
+  fill: var(--pattern-color, #3b82f6);
+  transition: fill 0.2s;
+}
+
+.dot-halo {
+  fill: var(--pattern-color, #3b82f6);
+  opacity: 0.2; 
+}
+
+.refresh-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  margin-top: 8px;
+  
+  border-radius: 9999px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #64748b;
+  
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  color: #ef4444;
+  background-color: #fee2e2;
+}
+
+.refresh-btn:active {
+  transform: scale(0.95);
+}
+
+.btn-icon {
+  font-size: 1rem;
+  display: block;
+}
+
+.connection-line {
+  stroke: var(--pattern-color, #3b82f6);
+  stroke-width: 3;
+  stroke-linecap: round;
+  pointer-events: none;
+  
+}

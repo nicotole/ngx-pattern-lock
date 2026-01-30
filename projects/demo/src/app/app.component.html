@@ -1,0 +1,52 @@
+<div class="container">
+  <section class="left-container">
+    <h1>ngx-pattern-lock</h1>
+    <p class="description">A lightweight, customizable pattern lock for Angular.</p>
+    <div class="command">
+      <span class="prompt">$</span>
+      <span class="keyword">npm</span> install ngx-pattern-lock
+    </div>
+
+    <div class="repo-buttons">
+  
+      <a href="https://github.com/nicotole/ngx-pattern-lock" target="_blank" class="btn btn-github">
+        <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+        <span>GitHub Repo</span>
+      </a>
+    
+      <a href="https://www.npmjs.com/package/ngx-pattern-lock" target="_blank" class="btn btn-npm">
+        <img src="https://static.npmjs.com/58a19602036db1daee0d7863c94673a4.png" alt="NPM">
+        <span>View on NPM</span>
+      </a>
+    
+    </div>
+
+    <div class="contact">
+      <p class="created-by">
+        Created with <span class="heart">❤</span> by <strong>Nico</strong>
+      </p>
+      
+      <div class="social-links">
+        <a href="https://www.linkedin.com/in/nicolastoledodev/" target="_blank" class="social-btn linkedin" title="Connect on LinkedIn">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174857.png" alt="LinkedIn">
+          <span>LinkedIn</span>
+        </a>
+    
+        <a href="https://github.com/nicotole" target="_blank" class="social-btn github" title="View GitHub Profile">
+          <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" alt="GitHub">
+          <span>GitHub</span>
+        </a>
+      </div>
+    </div>
+
+
+  </section>
+  <section class="right-container">
+    <ngx-pattern-lock
+      label="Draw a pattern"
+      refreshButtonLabel="Refresh"
+      (patternChange)="onComplete($event)"
+    ></ngx-pattern-lock>
+    <p>Detected Pattern <strong>[{{ code }}]</strong></p>
+  </section>
+</div>

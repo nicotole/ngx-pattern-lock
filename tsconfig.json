@@ -9,6 +9,11 @@
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
+    "paths": {
+      "ngx-pattern-lock": [
+        "./projects/ngx-pattern-lock/src/public-api.ts"
+      ]
+    },
     "esModuleInterop": true,
     "sourceMap": true,
     "declaration": false,
