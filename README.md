@@ -1,27 +1,121 @@
-# NgxPatternLockWorkspace
+# ngx-pattern-lock 
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.3.3.
+A lightweight, fully responsive, and customizable Android-style pattern lock component for Angular. Built with SVG for crisp rendering on any device, with zero heavy dependencies.
 
-## Development server
+### [Click here to try the Live Demo!](https://nicotole.github.io/ngx-pattern-lock/)
+> *Note: It supports both mouse and touch interactions seamlessly.*
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features 
 
-## Code scaffolding
+*  **Lightweight:** Zero dependencies.
+*  **Mobile Ready:** Full touch support with no "ghost drag" effects.
+*  **SVG Based:** Sharp rendering on retina/high-DPI screens.
+*  **High Performance:** Smooth animations and interactions.
+*  **Fully Customizable:** Easily change colors and sizes via CSS variables.
+*  **Standalone Ready:** Compatible with modern Angular (17+) standalone components.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation 
 
-## Build
+Run the following command in your project:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+npm install ngx-pattern-lock
+```
+## Usage 
 
-## Running unit tests
+### 1. Import the Component
+Import `NgxPatternLockComponent` in your standalone component (or Module).
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+import { Component } from '@angular/core';
+import { NgxPatternLockComponent } from 'ngx-pattern-lock'; // <--- Import the correct class name
 
-## Running end-to-end tests
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [ NgxPatternLockComponent ], // <--- Add to imports array
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
+})
+export class AppComponent {
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+  // The library emits the pattern as an array of numbers (IDs 1-9)
+  onPatternComplete(pattern: number[]) {
+    console.log('Pattern captured:', pattern);
+    // Example output: [1, 2, 5, 9]
+    
+    if (this.isPatternCorrect(pattern)) {
+      console.log('Unlocked! 🎉');
+    } else {
+      console.log('Wrong pattern ❌');
+    }
+  }
+  
+  // Example validation logic
+  isPatternCorrect(pattern: number[]): boolean {
+    const correctPattern = [1, 2, 3, 6, 9]; // Your secret password
+    return JSON.stringify(pattern) === JSON.stringify(correctPattern);
+  }
+}
+```
+### 2. Use in Template
 
-## Further help
+```html
+  <ngx-pattern-lock 
+    label="Draw your pattern"
+    refreshButtonLabel="Reset" 
+    (patternChange)="onPatternComplete($event)">
+  </ngx-pattern-lock>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+```
+
+## API 
+
+| Name | Type | Description |
+| :--- | :--- | :--- |
+| **`@Input() label`** | `string` | Optional text displayed above the pattern grid (e.g., "Draw pattern"). |
+| **`@Input() refreshButtonLabel`** | `string` | Text for the reset button. If provided, the button will appear below the grid. |
+| **`@Output() patternChange`** | `EventEmitter<number[]>` | Emits an array of selected point IDs (e.g., `[1, 2]`) when the user completes a pattern. |
+| **`@Output() patternCleared`** | `EventEmitter<void>` | Emits an event when the pattern is reset or the refresh button is clicked. |
+
+## Styling & Customization 
+The component is designed to be styled easily using CSS Variables. You can define these in your global styles (styles.scss) or within the parent component.
+
+```
+/* Example Customization */
+ngx-pattern-lock {
+  /* The primary color (lines, active dots, and halo) */
+  --pattern-color: #3b82f6; 
+  
+  /* The background color of the pattern area */
+  --pattern-bg: #ffffff;
+  
+  /* Color of the inactive dots */
+  --pattern-inactive: #cbd5e1;
+}
+```
+**Dimensions** 
+
+The component takes 100% of the width of its parent container to ensure responsiveness. To control the size, simply wrap it in a div with a defined width:
+
+```css
+.lock-container {
+  width: 100%;
+  max-width: 400px; /* Limits the size on large screens */
+  margin: 0 auto;   /* Centers the component */
+  padding: 20px;
+}
+```
+
+## Compatibility 
+* **Angular:** v17+ (Ivy compatible / Standalone)
+* **Browsers:** Chrome, Firefox, Safari, Edge, Mobile Browsers (iOS & Android).
+
+---
+### License 
+
+MIT © Nicolas Toledo
+
+Made with ❤️ 
+
+ [![GitHub](https://img.shields.io/badge/GitHub-Nicolas%20Toledo-181717?style=for-the-badge&logo=github)](https://github.com/nicotole) [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0077B5?style=for-the-badge&logo=linkedin)](https://www.linkedin.com/in/nicolastoledodev)
