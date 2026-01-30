@@ -1,7 +1,24 @@
 {
   "name": "ngx-pattern-lock",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "type": "module",
+  "license": "MIT",
+  "author": "Nicolas Toledo",
+  "description": "A lightweight, Android-style pattern lock component for Angular.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nicotole/ngx-pattern-lock"
+  },
+  "keywords": [ 
+    "angular",
+    "pattern-lock",
+    "security",
+    "password",
+    "gesture",
+    "auth",
+    "standalone",
+    "svg"
+  ],
   "peerDependencies": {
     "@angular/common": ">=17.0.0",
     "@angular/core": ">=17.0.0"
