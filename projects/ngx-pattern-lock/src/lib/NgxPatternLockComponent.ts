@@ -9,7 +9,7 @@ import { NgZone } from '@angular/core';
   standalone: true,
   imports: [CommonModule, NgIf]
 })
-export class PatternInputComponent implements AfterViewInit, OnDestroy {
+export class NgxPatternLockComponent implements AfterViewInit, OnDestroy {
   @Input() label?: string = '';
   @Input() refreshButtonLabel?: string = ''
   @Output() patternChange = new EventEmitter<number[]>();
