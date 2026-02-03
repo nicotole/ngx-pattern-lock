@@ -88,14 +88,13 @@
   
   font-size: 0.8rem;
   font-weight: 500;
-  color: #64748b;
-  
+  color: var(--pattern-btn-color, #64748b);  
   transition: all 0.2s;
 }
 
 .refresh-btn:hover {
-  color: #ef4444;
-  background-color: #fee2e2;
+  color: var(--pattern-error, #ef4444);
+  background-color: var(--pattern-error-bg, #fee2e2);
 }
 
 .refresh-btn:active {
