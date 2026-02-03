@@ -1,13 +1,13 @@
 # ngx-pattern-lock 
 
-A lightweight, fully responsive, and customizable Android-style pattern lock component for Angular. Built with SVG for crisp rendering on any device, with zero heavy dependencies.
+A lightweight, fully responsive, and customizable Android-style pattern lock component for Angular. Built with SVG for crisp rendering on any device, with zero external dependencies.
 
 ### [Click here to try the Live Demo!](https://nicotole.github.io/ngx-pattern-lock/)
 > *Note: It supports both mouse and touch interactions seamlessly.*
 
 ## Features 
 
-*  **Lightweight:** Zero dependencies.
+*  **Lightweight:** Zero external dependencies.
 *  **Mobile Ready:** Full touch support with no "ghost drag" effects.
 *  **SVG Based:** Sharp rendering on retina/high-DPI screens.
 *  **High Performance:** Smooth animations and interactions.
@@ -78,32 +78,32 @@ export class AppComponent {
 | **`@Output() patternChange`** | `EventEmitter<number[]>` | Emits an array of selected point IDs (e.g., `[1, 2]`) when the user completes a pattern. |
 | **`@Output() patternCleared`** | `EventEmitter<void>` | Emits an event when the pattern is reset or the refresh button is clicked. |
 
+### Methods
+| Name | Description |
+| :--- | :--- |
+| **`clear()`** | Resets the pattern programmatically (e.g., after an invalid attempt). Access it via `@ViewChild`. |
+
 ## Styling & Customization 
 The component is designed to be styled easily using CSS Variables. You can define these in your global styles (styles.scss) or within the parent component.
 
-```
+``` css 
 /* Example Customization */
 ngx-pattern-lock {
-  /* The primary color (lines, active dots, and halo) */
-  --pattern-color: #3b82f6; 
-  
-  /* The background color of the pattern area */
-  --pattern-bg: #ffffff;
-  
-  /* Color of the inactive dots */
-  --pattern-inactive: #cbd5e1;
-}
-```
-**Dimensions** 
+  /* --- MAIN COLORS --- */
+  --pattern-color: #3b82f6;      /* Lines & Active dots (Default: Blue) */
+  --pattern-bg: #ffffff;         /* Card background (Default: White) */
+  --pattern-inactive: #cbd5e1;   /* Inactive dots (Default: Gray) */
 
-The component takes 100% of the width of its parent container to ensure responsiveness. To control the size, simply wrap it in a div with a defined width:
+  /* --- DIMENSIONS --- */
+  --pattern-size: 300px;           /*  Max width. Set to 100% to let parent control size. */
+  --pattern-border: 1px solid #e2e8f0;) */
+  --pattern-border: 1px solid #e2e8f0;
+  --pattern-radius: 16px;
 
-```css
-.lock-container {
-  width: 100%;
-  max-width: 400px; /* Limits the size on large screens */
-  margin: 0 auto;   /* Centers the component */
-  padding: 20px;
+  /* --- REFRESH BUTTON --- */
+  --pattern-btn-color: #64748b;    /* Default text color (Default: Slate Gray) */
+  --pattern-error: #ef4444;        /* Hover text color (Default: Red) */
+  --pattern-error-bg: #fee2e2;     /* Hover background color (Default: Light Red) */
 }
 ```
 
